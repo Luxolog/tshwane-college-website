@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en-ZA">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Career Finder | Tshwane College</title>
+<meta name="description" content="Find study pathways that match your interests, strengths and career goals at Tshwane College.">
+<link rel="stylesheet" href="/assets/css/styles.css">
+<style>
+.quiz{max-width:820px;margin:auto}.quiz-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:2rem;box-shadow:var(--shadow)}.question{margin-bottom:2rem}.question h3{margin-bottom:1rem}.options{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem}.option{border:1px solid var(--line);border-radius:12px;padding:1rem;cursor:pointer;background:#fff}.option:hover,.option.selected{border-color:var(--navy);background:#f4f7f9}.result{display:none;margin-top:1.5rem;background:var(--navy);color:#fff;border-radius:18px;padding:2rem}.result p{color:#cbd6e4}.result a{color:var(--accent);font-weight:800}.progress{height:7px;background:#e8edf2;border-radius:10px;overflow:hidden;margin-bottom:2rem}.progress i{display:block;height:100%;width:0;background:var(--navy);transition:.25s}
+</style></head>
+<body>
+<header class="site-header"><div class="container nav-wrap"><a class="brand" href="/"><span class="brand-mark">TC</span><span><strong>Tshwane College</strong><small>Study. Skill. Succeed.</small></span></a><nav><a href="/">Home</a><a href="/programmes.html">Programmes</a><a href="/career-finder.html">Career Finder</a><a href="/apply.html">Apply</a><a href="/contact.html">Contact</a></nav></div></header>
+<main>
+<section class="hero"><div class="container"><p class="eyebrow">CAREER FINDER</p><h1>Not sure what to study?</h1><p class="hero-copy">Answer four quick questions. We'll suggest study areas to explore — you don't need to know your career yet.</p></div></section>
+<section class="section soft"><div class="container quiz"><div class="quiz-card">
+<div class="progress"><i id="bar"></i></div>
+<form id="quiz">
+<div class="question"><h3>1. What kind of work interests you most?</h3><div class="options">
+<label class="option"><input type="radio" name="interest" value="business"> Leading, organising or building a business</label>
+<label class="option"><input type="radio" name="interest" value="it"> Technology, computers or solving digital problems</label>
+<label class="option"><input type="radio" name="interest" value="engineering"> Building, fixing or understanding how things work</label>
+<label class="option"><input type="radio" name="interest" value="health"> Helping people and serving communities</label>
+</div></div>
+<div class="question"><h3>2. Which strength sounds most like you?</h3><div class="options">
+<label class="option"><input type="radio" name="strength" value="business"> Communication and organisation</label>
+<label class="option"><input type="radio" name="strength" value="it"> Logic and problem solving</label>
+<label class="option"><input type="radio" name="strength" value="engineering"> Practical and technical thinking</label>
+<label class="option"><input type="radio" name="strength" value="health"> Empathy and teamwork</label>
+</div></div>
+<div class="question"><h3>3. What environment sounds best?</h3><div class="options">
+<label class="option"><input type="radio" name="environment" value="business"> Office, business or entrepreneurial</label>
+<label class="option"><input type="radio" name="environment" value="it"> Digital, technology or hybrid</label>
+<label class="option"><input type="radio" name="environment" value="engineering"> Workshop, site or technical</label>
+<label class="option"><input type="radio" name="environment" value="health"> Community, service or people-focused</label>
+</div></div>
+<div class="question"><h3>4. What matters most in your future?</h3><div class="options">
+<label class="option"><input type="radio" name="goal" value="business"> Building opportunities and earning potential</label>
+<label class="option"><input type="radio" name="goal" value="it"> Staying relevant in a digital world</label>
+<label class="option"><input type="radio" name="goal" value="engineering"> Creating and solving real-world problems</label>
+<label class="option"><input type="radio" name="goal" value="health"> Making a positive difference</label>
+</div></div>
+<button class="btn btn-primary" type="submit">Show My Study Path</button>
+</form>
+<div class="result" id="result"><p class="eyebrow">YOUR SUGGESTED PATH</p><h2 id="resultTitle"></h2><p id="resultText"></p><a id="resultLink" href="/programmes.html">Explore programmes →</a></div>
+</div></div></section>
+</main>
+<footer class="footer"><div class="container footer-bottom"><span>© Tshwane College</span><span>Career Finder prototype</span></div></footer>
+<script>
+const labels={business:{title:'Business & Management',text:'Your answers suggest you may enjoy organising people and resources, communicating ideas and building opportunities. Explore business and management pathways.'},it:{title:'Information Technology',text:'You appear drawn to technology, logic and solving problems. Explore IT and digital pathways and see which specialisation fits you.'},engineering:{title:'Engineering & Technical',text:'Your strengths point toward practical problem solving and understanding how things work. Explore technical and engineering pathways.'},health:{title:'Health & Community',text:'You seem motivated by people, teamwork and service. Explore health and community-focused pathways.'}};
+document.querySelectorAll('.option input').forEach(x=>x.addEventListener('change',()=>x.closest('.options').querySelectorAll('.option').forEach(o=>o.classList.remove('selected'))||x.closest('.option').classList.add('selected')));
+document.querySelectorAll('input').forEach(x=>x.addEventListener('change',()=>{const n=document.querySelectorAll('input:checked').length;document.querySelector('#bar').style.width=(n/4*100)+'%'}));
+document.querySelector('#quiz').addEventListener('submit',e=>{e.preventDefault();const a=[...new FormData(e.target).values()];if(a.length<4){alert('Please answer all four questions.');return}const counts=a.reduce((o,x)=>(o[x]=(o[x]||0)+1,o),{});const k=Object.keys(counts).sort((x,y)=>counts[y]-counts[x])[0];document.querySelector('#resultTitle').textContent=labels[k].title;document.querySelector('#resultText').textContent=labels[k].text;document.querySelector('#resultLink').href='/programme.html?course='+k;document.querySelector('#result').style.display='block';document.querySelector('#result').scrollIntoView({behavior:'smooth',block:'center'})});
+</script>
+</body></html>
