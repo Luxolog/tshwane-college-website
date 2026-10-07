@@ -10,3 +10,22 @@
 @media(max-width:900px){.trust-items{grid-template-columns:repeat(3,1fr)}.trust-items span:nth-child(3){border-right:0}.programme-grid-featured,.certificate-grid,.data-grid{grid-template-columns:repeat(2,1fr)}.practical-grid,.leadership-grid,.funding-feature,.school-feature{grid-template-columns:1fr}.leader-director{grid-template-columns:1fr 1fr}.school-image{min-height:380px}}
 @media(max-width:600px){.trust-items{grid-template-columns:1fr 1fr}.trust-items span{border-right:0;border-bottom:1px solid #333}.hero-home{min-height:600px}.hero-copy-block{padding:4rem 0}.programme-grid-featured,.certificate-grid,.data-grid,.practical-grid,.school-points{grid-template-columns:1fr}.leader-director{grid-template-columns:1fr}.leader-image{min-height:240px}.school-image{min-height:300px}.story-card.large img,.story-card img{height:250px}.apply-actions{width:100%;flex-direction:column}.apply-actions .btn{width:100%}}
 .accreditation-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}.accreditation-grid article{border:1px solid var(--line);border-radius:var(--radius);padding:1.6rem;background:#fff}.accreditation-grid span{color:var(--accent);font-weight:900}.accreditation-grid h3{margin:.7rem 0 .3rem}.accreditation-grid strong{display:block;font-size:.9rem}.accreditation-grid p{color:var(--muted);font-size:.9rem}.accreditation-grid a{font-weight:800;font-size:.85rem}.accreditation-section{background:#fff}@media(max-width:900px){.accreditation-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.accreditation-grid{grid-template-columns:1fr}}
+/* Leadership messages redesign */
+.leadership-messages{grid-template-columns:repeat(3,1fr);align-items:stretch}
+.message-card{display:flex;flex-direction:column;min-height:100%}
+.message-top{min-height:150px;padding:1.5rem 1.7rem;display:flex;flex-direction:column;justify-content:space-between;color:#fff;position:relative;overflow:hidden}
+.message-top:after{content:"";position:absolute;inset:auto -25px -65px auto;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.08)}
+.message-top>span{font-size:.78rem;font-weight:900;letter-spacing:.12em;position:relative;z-index:1}
+.message-top .eyebrow{color:#fff;margin:0;position:relative;z-index:1}
+.message-school{background:#111}
+.message-career{background:#d71920}
+.message-vision{background:#333}
+.message-card .leader-content{padding:2rem}
+.message-card .leader-content h3{font-size:1.65rem;line-height:1.15;margin-top:.2rem}
+.message-card .leader-content p{line-height:1.75}
+.message-card .leader-content small{display:block;margin-top:1.3rem;padding-top:1rem;border-top:1px solid var(--line);line-height:1.5}
+.message-director .leader-content{background:#fff}
+@media(max-width:900px){
+  .leadership-messages{grid-template-columns:1fr}
+  .message-card{max-width:none}
+}
