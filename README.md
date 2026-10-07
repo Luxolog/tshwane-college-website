@@ -51,3 +51,9 @@ Replace all prototype content with information supplied and approved by Tshwane 
 ## Important
 
 This repository is a prototype. No programme, accreditation, fee, contact detail or application claim should be treated as official until verified by the college.
+
+
+## Recruitment features
+- Career Finder quiz routes prospective students to relevant study areas.
+- Programme pages provide a foundation for requirements, fees, intakes and career pathways.
+- Application and admissions journeys are separated so they can later connect to CRM/application systems.
