@@ -54,3 +54,5 @@
 .result-stat p{color:var(--muted);margin:0;line-height:1.5}
 @media(max-width:900px){.results-highlight{grid-template-columns:1fr}.result-stat-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.result-stat-grid{grid-template-columns:1fr}.results-highlight>div{padding:1.5rem}}
+
+.portal-promo{padding:30px 0}.portal-promo-inner{background:#111;color:#fff;border-radius:24px;padding:34px 38px;display:flex;align-items:center;justify-content:space-between;gap:30px}.portal-promo-inner h2{margin:5px 0 10px;font-size:30px}.portal-promo-inner p:not(.eyebrow){max-width:700px;color:#c9c9c9;line-height:1.7}.portal-promo .eyebrow{color:#ff7278}@media(max-width:700px){.portal-promo-inner{display:block;padding:28px}.portal-promo-inner .btn{display:inline-block;margin-top:10px}}
