@@ -1,0 +1,33 @@
+-- Manual policy test checklist for a dedicated development database.
+-- Run with distinct seeded users for each role. Never run against production as a first test.
+-- Also add automated pgTAP tests before production. See Supabase's RLS testing guidance.
+--
+-- Test identities:
+--   unauthenticated visitor
+--   active admin
+--   active team_leader
+--   active agent A (assigned task/post)
+--   active agent B (not assigned)
+--   active approver
+--   inactive profile
+--
+-- Expected outcomes:
+-- [ ] Anonymous user cannot read or write any table.
+-- [ ] Inactive account cannot read or write operational records.
+-- [ ] Agent A can read a task assigned to them and comments on that task.
+-- [ ] Agent B cannot read Agent A's task/comments unless they created the task.
+-- [ ] Agent cannot create or assign a task directly.
+-- [ ] Agent can only update an assigned task within the permitted workflow.
+-- [ ] Team leader can view and update tasks across the team.
+-- [ ] Only admin can create/update staff profiles and change roles.
+-- [ ] Agent can read/edit their own draft social post.
+-- [ ] Approver can read social posts and update approval state, but cannot manage staff roles.
+-- [ ] Agent cannot read audit events or insert/edit/delete audit events.
+-- [ ] No client can access service-role credentials or database passwords.
+--
+-- IMPORTANT REVIEW ITEM:
+-- Postgres UPDATE policies apply to whole rows unless column privileges or server-side
+-- transition functions constrain fields. Before production, replace broad task/post UPDATE
+-- grants with column-specific grants or server-side RPCs so agents cannot change assignee,
+-- creator, priority, approval fields, or audit-sensitive metadata by altering requests.
+-- Also implement an append-only audit trigger/server action and automated pgTAP allow/deny tests.
